@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 
 /**
  * Represents a transaction entered by an employee at the coffee shop.
@@ -98,7 +99,7 @@ public class Transaction implements CostBehavior {
         for (Drink drink : this.associatedItems) {
             cost += drink.determineProfit();
         }
-        return cost;
+        return Math.round(cost);
     }
 
     public double determinePrice() {
@@ -106,6 +107,6 @@ public class Transaction implements CostBehavior {
         for (Drink drink : this.associatedItems) {
             price += drink.determinePrice();
         }
-        return price;
+        return Math.round(price);
     }
 }
