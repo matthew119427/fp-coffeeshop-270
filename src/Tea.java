@@ -1,39 +1,60 @@
-
+/**
+ * Tea class that extends Drink
+ * @see Drink
+ * @version 4
+ */
 public class Tea extends Drink {
-
-    // additional Data Members
-    int numBags;
+    /**
+     * The number of tea bags in this drink.
+     */
+    final int numBags;
+    /**
+     * The base cost of the drink.
+     */
     final double baseCost = 0.5;
+    /**
+     * The base price of the drink.
+     */
     final double basePrice = 3;
 
-    // constructor and constructor chaining
+    /**
+     * @param S size of the drink
+     * @param M if the drink has milk
+     * @param I if the drink is iced
+     * @param Y if the drink has syrup
+     * @param num number of tea bags
+     */
     public Tea(char S, boolean M, boolean I, boolean Y, int num) {
         super(S, M, I, Y);
         numBags = num;
     }
 
-    // Getters & Setters
-
+    /**
+     * @return the number of tea bags
+     */
     public int getNumBags() {
         return this.numBags;
     }
 
-    public void setNumBags(int numShots) {
-        this.numBags = numShots;
-    }
-
+    /**
+     * @return the base cost of the drink
+     */
     public double getBaseCost() {
         return baseCost;
     }
 
+    /**
+     * @return the base price of the drink
+     */
     public double getBasePrice() {
         return basePrice;
     }
 
-    // override abstract methods in interface
+    /**
+     * @return the cost of the drink
+     */
     public double determineCost() {
         double cost = baseCost;
-        // as if statements following each other as these statements are not exclusive
         if (size == 'M') {
             cost += 0.3;
         } else if (size == 'L') {
@@ -51,13 +72,17 @@ public class Tea extends Drink {
         return cost;
     }
 
-
-
+    /**
+     * @return the profit of the drink
+     */
     public double determineProfit() {
         return this.determinePrice() - this.determineCost();
     }
 
-    // override abstract method from parent class
+    /**
+     * @return the price of the drink
+     */
+    @Override
     public double determinePrice() {
         double price = basePrice;
         if (size == 'M') {
@@ -76,6 +101,11 @@ public class Tea extends Drink {
         }
         return price;
     }
+
+    /**
+     * Returns a String representation of the drink
+     * @return the description of the drink
+     */
     @Override
     public String getDescription() {
         StringBuilder description = new StringBuilder();
@@ -90,8 +120,7 @@ public class Tea extends Drink {
         if (syrup) {
             description.append(" with Syrup");
         }
-        description.append(", " + numBags + " tea bags");
+        description.append(", ").append(numBags).append(" tea bags");
         return description.toString();
     }
-
 }
