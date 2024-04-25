@@ -1,21 +1,43 @@
 
 public class Coffee extends Drink {
-
-    // additional Data Members
-    int numShots;
+    /**
+     * The number of shots in this drink.
+     */
+    final int numShots;
+    /**
+     * The base cost of the drink.
+     */
     final double baseCost = 1;
+    /**
+     * The base price of the drink.
+     */
     final double basePrice = 4;
 
-    // constructor and constructor chaining
+    /**
+     * @param S size of the drink
+     * @param M if the drink has milk
+     * @param I if the drink is iced
+     * @param Y if the drink has syrup
+     * @param num number of shots
+     */
     public Coffee(char S, boolean M, boolean I, boolean Y, int num) {
         super(S, M, I, Y);
         numShots = num;
     }
 
-    // override abstract methods in interface
+    /**
+     * Getter for Coffee#numShots
+     * @return the number of shots
+     */
+    public int getNumShots() {
+        return this.numShots;
+    }
+
+    /**
+     * @return the cost of the drink
+     */
     public double determineCost() {
         double cost = baseCost;
-        // as if statements following each other as these statements are not exclusive
         if (size == 'M') {
             cost += 0.3;
         } else if (size == 'L') {
@@ -33,11 +55,16 @@ public class Coffee extends Drink {
         return cost;
     }
 
+    /**
+     * @return the profit of the drink
+     */
     public double determineProfit() {
         return this.determinePrice() - this.determineCost();
     }
 
-    // override abstract method from parent class
+    /**
+     * @return the number of shots
+     */
     public double determinePrice() {
         double price = basePrice;
         // as if statements following each other as these statements are not exclusive
@@ -57,7 +84,10 @@ public class Coffee extends Drink {
         }
         return price;
     }
-    
+
+    /**
+     * @return the description of the drink
+     */
     @Override
     public String getDescription() {
         StringBuilder description = new StringBuilder();
@@ -77,8 +107,4 @@ public class Coffee extends Drink {
 
 
     }
-
-	public Object getNumShots() {
-        return this.numShots;
-	}
 }
